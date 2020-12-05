@@ -9,6 +9,7 @@ version = "0.1.0"
 cortex-m = "0.6.4"
 cortex-m-rt = "0.6.13"
 panic-probe = "0.1.0"
+embedded-hal = "0.2.4"
 
 [dependencies.rtt-target]
 version = "0.3.0"

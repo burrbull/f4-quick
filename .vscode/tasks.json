@@ -60,10 +60,34 @@
             "group": "build"
         },
         {
-            "label": "Cargo Run",
+            "label": "Cargo Run (release)",
             "type": "process",
             "command": "cargo",
             "args": ["run", "--release"],
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "Cargo Run (release, under reset)",
+            "type": "process",
+            "command": "cargo",
+            "args": ["run", "--release", "--", "--connect-under-reset"],
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "Cargo Run (no-flash)",
+            "type": "process",
+            "command": "cargo",
+            "args": ["run", "--release", "--", "--no-flash"],
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "Cargo Run (no-flash, under reset)",
+            "type": "process",
+            "command": "cargo",
+            "args": ["run", "--release", "--", "--no-flash", "--connect-under-reset"],
             "problemMatcher": [],
             "group": "build"
         },
