@@ -1,0 +1,36 @@
+[package]
+authors = ["Andrey Zgarbul <zgarbul.andrey@gmail.com>"]
+edition = "2018"
+readme = "README.md"
+name = "f4-quick"
+version = "0.1.0"
+
+[dependencies]
+cortex-m = "0.6.4"
+cortex-m-rt = "0.6.13"
+panic-probe = "0.1.0"
+
+[dependencies.rtt-target]
+version = "0.3.0"
+features = ["cortex-m"]
+
+# Uncomment for the allocator example.
+# alloc-cortex-m = "0.4.0"
+
+# Uncomment for the device example.
+# Update `memory.x`, set target to `thumbv7em-none-eabihf` in `.cargo/config`,
+# and then use `cargo build --examples device` to build it.
+[dependencies.stm32f4xx-hal]
+features = ["stm32f401", "rt"]
+version = "0.8.3"
+
+# this lets you use `cargo fix`!
+[[bin]]
+name = "f4-quick"
+test = false
+bench = false
+
+[profile.release]
+codegen-units = 1 # better optimizations
+debug = true # symbols are nice and they don't increase the size on Flash
+lto = true # better optimizations
