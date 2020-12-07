@@ -27,6 +27,11 @@ fn main() -> ! {
     rtt_init_print!();
 
     let dp = Peripherals::take().unwrap();
+    dp.DBGMCU.cr.modify(|_, w| {
+             w.dbg_sleep().set_bit();
+             w.dbg_standby().set_bit();
+             w.dbg_stop().set_bit()
+         });
 
     let rcc = dp.RCC.constrain();
     let clocks = rcc.cfgr.sysclk(16.mhz()).pclk1(8.mhz()).freeze();
@@ -48,13 +53,14 @@ fn main() -> ! {
     // Move the timer into our global storage
     cortex_m::interrupt::free(|cs| *G_TIM.borrow(cs).borrow_mut() = Some(timer));
 
+
     //enable TIM2 interrupt
     unsafe {
         cortex_m::peripheral::NVIC::unmask(Interrupt::TIM2);
     }
 
     loop {
-        wfi();
+//        wfi();
     }
 }
 
