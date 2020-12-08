@@ -95,5 +95,13 @@ fn TIM2() {
 
     let _ = led.toggle();
     let _ = tim.wait();
-    rprintln!("Тик!");
+
+    static mut NUM_TICKS: i32 = 0;
+    let n = unsafe { &mut NUM_TICKS };
+    *n += 1;
+    if *n % 2 != 0 {
+        rprintln!("Тик {} !", n);
+    } else {
+        rprintln!("Так {} !", n);
+    }
 }

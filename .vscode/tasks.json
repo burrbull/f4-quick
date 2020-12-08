@@ -76,18 +76,26 @@
             "group": "build"
         },
         {
-            "label": "Cargo Run (no-flash)",
+            "label": "Cargo Embed",
             "type": "process",
             "command": "cargo",
-            "args": ["run", "--release", "--", "--no-flash"],
+            "args": ["embed", "--release"],
             "problemMatcher": [],
             "group": "build"
         },
         {
-            "label": "Cargo Run (no-flash, under reset)",
+            "label": "Cargo Embed (no flash)",
             "type": "process",
             "command": "cargo",
-            "args": ["run", "--release", "--", "--no-flash", "--connect-under-reset"],
+            "args": ["embed", "--release", "no_flash"],
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "Cargo Embed (under reset)",
+            "type": "process",
+            "command": "cargo",
+            "args": ["embed", "--release", "under_reset"],
             "problemMatcher": [],
             "group": "build"
         },
