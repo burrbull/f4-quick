@@ -27,11 +27,13 @@ fn main() -> ! {
     rtt_init_print!();
 
     let dp = Peripherals::take().unwrap();
+    // Enable debug in sleep mode and force clocking on AHB1
     dp.DBGMCU.cr.modify(|_, w| {
              w.dbg_sleep().set_bit();
              w.dbg_standby().set_bit();
              w.dbg_stop().set_bit()
          });
+    dp.RCC.ahb1enr.modify(|_, w| w.dma1en().enabled());
 
     let rcc = dp.RCC.constrain();
     let clocks = rcc.cfgr.sysclk(16.mhz()).pclk1(8.mhz()).freeze();
